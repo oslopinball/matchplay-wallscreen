@@ -1,32 +1,49 @@
 <h2>
-	<i class="fa fa-cogs"></i> Arenas <span class="badge">x</span>
-	<small>x attempts per arena</small>
+	<i class="fa fa-cogs"></i> Arenas <span class="badge">{{ arenasCount }}</span>
+	<small>{{ attemptsArena }} attempts per arena</small>
 </h2>
 
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover" style="font-size:22px">
 	<thead>
 		<tr>
 			<th>#</th>
 			<th>Arena</th>
 			<th>Status</th>
+			<th>Best Score</th>
+			<th>TAG</th>
 			<th>Done</th>
 		</tr>
 	</thead>
 	<tbody>
+		{% for arena in arenas %}
 		<tr>
-			<td>1</td>
-			<td><a href="#">x</a></td>
+			<td>{{ loop.index }}.</td>
 			<td>
-				<span class="label label-success">
-					<i class="fa fa-check"></i>
-					Active
-				</span>
+				<!--<a href="#{{ arena['arena_id'] }}">-->
+				{{ arena['name'] }}
+				<!--</a>-->
 			</td>
+			<td>
+				{% if arena['tournament']['status'] == "active" %}
+					<span class="label label-success">
+						<i class="fa fa-check"></i>
+						{{ arena['tournament']['status'] }}
+					</span>
+				{% else %}
+					<span class="label label-danger">
+						<i class="fa fa-times"></i>
+						{{ arena['tournament']['status'] }}
+					</span>
+				{% endif %}
+			</td>
+			<td><span class="label label-info">xxx.yyy.zzz</span></td>
+			<td>TAG</td>
 			<td>
 				<span class="label label-primary">
 					x / y
 				</span>
 			</td>
 		</tr>
+		{% endfor %}
 	</tbody>
 </table>

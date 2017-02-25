@@ -1,25 +1,38 @@
 <div class="well">
 	<h1>
-		<i class="fa fa-trophy"></i> x
+		<i class="fa fa-trophy"></i> {{ name }}
 	</h1>
 
 	<p class="lead">
 
 	<span class="label label-primary">
 		<i class="fa fa-info-circle"></i>
-		Format: x
+		Format: {{ type }}
 	</span>
 
 	&nbsp;
+
+	{% if status == "completed" %}
 		<span class="label label-success">
 			<i class="fa fa-check"></i>
-			Status: x
+			Status: {{ status}}
 		</span>
+	{% elif status == "started" %}
+		<span class="label label-warning">
+			<i class="fa fa-check"></i>
+			Status: {{ status}}
+		</span>
+	{% else %}
+		<span class="label label-danger">
+			<i class="fa fa-times"></i>
+			Status: {{ status }}
+		</span>
+	{% endif %}
 
 	&nbsp;
 
 	<span class="label label-default">
-		<i class="fa fa-clock-o"></i> Last updated: x
+		<i class="fa fa-clock-o"></i> Last updated: {{ timestamp }}
 	</span>
 
 	</p>
