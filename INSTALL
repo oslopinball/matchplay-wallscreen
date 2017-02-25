@@ -1,0 +1,7 @@
+INSTALL
+=======
+
+$ sudo apt install virtualenv
+
+$ mkvirtualenv --python=/usr/bin/python3 matchplay-wallscreen
+(matchplay-wallscreen) $ pip3 install flask

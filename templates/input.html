@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="post">
+	<h2>Please enter Match Play tournament ID</h2>
+
+	<div class="form-group">
+		<label for="id" class="sr-only">Tournament ID</label>
+		<input type="number" id="id" name="id" class="form-control" placeholder="Tournament ID" required autofocus>
+	</div>
+
+	<button class="btn btn-lg btn-success btn-block" type="submit">Go!</button>
+</form>
+
+{% endblock content %}
