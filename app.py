@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
 from flask import Flask, render_template, g, request, redirect, url_for
+import time
+import datetime
 import config
+from api import Tournament
 
 app = Flask(__name__)
 
@@ -15,7 +18,26 @@ def index():
 
 @app.route('/<int:id>')
 def tournament(id):
-    return render_template("index.html", id=id)
+    t = Tournament(id)
+
+    ts = time.time()
+    timestamp = datetime.datetime.fromtimestamp(ts).strftime('%H:%M:%S')
+
+    return render_template("index.html",
+        id=id,
+        timestamp = timestamp,
+        name = t.name(),
+        type = t.type(),
+        status = t.status(),
+
+        playersCount = t.playersCount(),
+        arenasCount = t.arenasCount(),
+
+        attemptsArena = t.attemptsArena(),
+
+        arenas = t.arenas(),
+        standings = t.standings()
+    )
 
 if __name__ == "__main__":
     app.run(host=config.host, port=config.port, debug=config.debug)
