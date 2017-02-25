@@ -2,6 +2,30 @@
 
 {% block content %}
 
-Hello World! :)
+<div class="row">
+	<div class="col-md-4">{% include 'info.html' %}</div>
+	<div class="col-md-4">{% include 'progress.html' %}</div>
+	<div class="col-md-4">{% include 'arenas.html' %}</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		{% set from = '1' %}
+		{% set to = '8' %}
+		{% include 'standings.html' %}
+	</div>
+
+	<div class="col-md-4">
+		{% set from = '9' %}
+		{% set to = '16' %}
+		{% include 'standings.html' %}
+	</div>
+
+	<div class="col-md-4">
+		{% set from = '17' %}
+		{% set to = '25' %}
+		{% include 'standings.html' %}
+	</div>
+</div>
 
 {% endblock content %}

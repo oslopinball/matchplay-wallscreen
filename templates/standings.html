@@ -1,0 +1,35 @@
+<h2>
+	<i class="fa fa-users"></i> Standings <span class="badge">{{ from }} - {{ to }}</span>
+	<small>
+		{% if from == "1" %}
+			Top 8 = A playoffs
+		{% elif from == "9" %}
+			Top 16 = B playoffs
+		{% endif %}
+	</small>
+</h2>
+
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Points</th>
+			<th>Done</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{from}}</td>
+			<td>
+				<a href="#">x</a>
+			</td>
+			<td>
+				<span class="label label-info">x</span>
+			</td>
+			<td>
+				<span class="label label-primary">x / y</span>
+			</td>
+		</tr>
+	</tbody>
+</table>
