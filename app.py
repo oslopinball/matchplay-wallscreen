@@ -34,6 +34,7 @@ def tournament(id):
         arenasCount = t.arenasCount(),
 
         attemptsArena = t.attemptsArena(),
+        maxAttemptsArena = t.maxAttemptsArena(),
 
         arenas = t.arenas(),
         standings = t.standings()
