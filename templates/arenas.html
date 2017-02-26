@@ -3,14 +3,14 @@
 	<small>{{ attemptsArena }} attempts per arena</small>
 </h2>
 
-<table class="table table-striped table-hover" style="font-size:22px">
+<table class="table table-striped table-hover">
 	<thead>
 		<tr>
 			<th>#</th>
 			<th>Arena</th>
 			<th>Status</th>
-			<th>Best Score</th>
-			<th>TAG</th>
+			<th>Highscore</th>
+			<th>Player</th>
 			<th>Done</th>
 		</tr>
 	</thead>
@@ -36,11 +36,36 @@
 					</span>
 				{% endif %}
 			</td>
-			<td><span class="label label-info">xxx.yyy.zzz</span></td>
-			<td>TAG</td>
+
 			<td>
-				<span class="label label-primary">
-					x / {{ maxAttemptsArena }}
+			{% for score in scores[arena['arena_id']] if score.points == '100.00' %}
+				<span class="label label-info">
+					{{ "{0:,}".format(score['score']).replace(',', '.') }}
+				</span>
+			{% endfor %}
+			</td>
+
+			<td>
+				{% for score in scores[arena['arena_id']] if score.points == '100.00' %}
+					{% for person in standings if person['player_id'] == score['player_id'] %}
+						{{ person['name'] }}
+					{% endfor %}
+				{% endfor %}
+			</td>
+
+			<td>
+				{% set percent = arenasPercent[arena['arena_id']] %}
+
+				{% if percent == 100 %}
+				<span class="label label-success">
+				{% elif percent >= 50 %}
+				<span class="label label-warning">
+				{% elif percent >= 0 %}
+				<span class="label label-danger">
+
+				{% endif %}
+
+				{{ arenaScoreCount[arena['arena_id']] }} / {{ maxAttemptsArena }}
 				</span>
 			</td>
 		</tr>
