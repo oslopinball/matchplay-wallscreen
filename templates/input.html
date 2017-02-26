@@ -2,15 +2,26 @@
 
 {% block content %}
 
-<form method="post">
-	<h2>Please enter Match Play tournament ID</h2>
+<div class="container">
 
-	<div class="form-group">
-		<label for="id" class="sr-only">Tournament ID</label>
-		<input type="number" id="id" name="id" class="form-control" placeholder="Tournament ID" required autofocus>
-	</div>
+	<form method="post">
+		<h2>Please enter Match Play tournament ID</h2>
 
-	<button class="btn btn-lg btn-success btn-block" type="submit">Go!</button>
-</form>
+		<div class="form-group">
+			<label for="id">Tournament ID:</label>
+			<input type="number" id="id" name="id" class="form-control" placeholder="id" required autofocus>
+		</div>
+
+		<div class="form-group">
+			<label for="refresh">Auto Refresh:</label>
+			<input type="number" id="refresh" name="refresh" class="form-control" placeholder="seconds" required autofocus>
+		</div>
+
+		<button class="btn btn-lg btn-success btn-block" type="submit"><i class="fa fa-rocket"></i> Launch!</button>
+	</form>
+
+</div>
+
+<br>
 
 {% endblock content %}
