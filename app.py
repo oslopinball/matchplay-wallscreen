@@ -12,12 +12,13 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         id = request.form.get('id')
-        return redirect(url_for('tournament', id=id))
+        refresh = request.form.get('refresh')
+        return redirect(url_for('tournament', id=id, refresh=refresh))
 
     return render_template('input.html')
 
-@app.route('/<int:id>')
-def tournament(id):
+@app.route('/<int:id>/<int:refresh>')
+def tournament(id, refresh):
     t = Tournament(id)
 
     ts = time.time()
@@ -26,20 +27,28 @@ def tournament(id):
     return render_template("index.html",
         id=id,
         timestamp = timestamp,
+        refresh = refresh,
+
         name = t.name(),
         type = t.type(),
         status = t.status(),
-
         maxAttempts = t.maxAttempts(),
         maxAttemptsPlayer = t.maxAttemptsPlayer(),
 
         playersCount = t.playersCount(),
-        arenasCount = t.arenasCount(),
+        playerScoreCount = t.playerScoreCount,
+        playersPercent = t.playersPercent(),
 
+        arenas = t.arenas(),
+        arenaScoreCount = t.arenaScoreCount,
+        arenasPercent = t.arenasPercent(),
+        aPercent = t.aPercent(),
+        aCount = t.aCount,
+        arenasCount = t.arenasCount(),
         attemptsArena = t.attemptsArena(),
         maxAttemptsArena = t.maxAttemptsArena(),
 
-        arenas = t.arenas(),
+        scores = t.scores,
         standings = t.standings()
     )
 
