@@ -30,6 +30,8 @@ def tournament(id):
         type = t.type(),
         status = t.status(),
 
+        maxAttemptsPlayer = t.maxAttemptsPlayer(),
+
         playersCount = t.playersCount(),
         arenasCount = t.arenasCount(),
 
