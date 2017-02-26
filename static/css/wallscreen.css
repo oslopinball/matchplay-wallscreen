@@ -1,0 +1,21 @@
+.badge {
+	font-size: 20px;
+}
+
+.table {
+	font-size: 20px;
+}
+
+.massive-font {
+	font-size: 30px;
+	text-align: center;
+}
+
+.progress {
+	height: 50px;
+	text-align: center;
+}
+
+.progress-bar {
+	padding: 15px;
+}
