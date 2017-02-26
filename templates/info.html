@@ -1,39 +1,56 @@
 <div class="well">
-	<h1>
-		<i class="fa fa-trophy"></i> {{ name }}
-	</h1>
+	<center>
 
-	<p class="lead">
+		<h1>
+			<i class="fa fa-trophy"></i> {{ name }}
+		</h1>
 
-	<span class="label label-primary">
-		<i class="fa fa-info-circle"></i>
-		Format: {{ type }}
-	</span>
+		<p class="lead">
 
-	&nbsp;
+		<span class="label label-info">
+			<i class="fa fa-users"></i>
+			Players: {{ standings | length }}
+		</span>
 
-	{% if status == "completed" %}
+		&nbsp;
+
+		<span class="label label-primary">
+			<i class="fa fa-info-circle"></i>
+			Format: {{ type }}
+		</span>
+
+		&nbsp;
+
+		{% if status == "completed" %}
+			<span class="label label-success">
+				<i class="fa fa-check"></i>
+				Status: {{ status}}
+			</span>
+		{% elif status == "started" %}
+			<span class="label label-warning">
+				<i class="fa fa-check"></i>
+				Status: {{ status}}
+			</span>
+		{% else %}
+			<span class="label label-danger">
+				<i class="fa fa-times"></i>
+				Status: {{ status }}
+			</span>
+		{% endif %}
+
+		&nbsp;
+
 		<span class="label label-success">
-			<i class="fa fa-check"></i>
-			Status: {{ status}}
+			<i class="fa fa-refresh"></i> Auto refresh: {{ refresh }} sec
 		</span>
-	{% elif status == "started" %}
-		<span class="label label-warning">
-			<i class="fa fa-check"></i>
-			Status: {{ status}}
+
+		&nbsp;
+
+		<span class="label label-default">
+			<i class="fa fa-clock-o"></i> Last updated: {{ timestamp }}
 		</span>
-	{% else %}
-		<span class="label label-danger">
-			<i class="fa fa-times"></i>
-			Status: {{ status }}
-		</span>
-	{% endif %}
 
-	&nbsp;
+		</p>
 
-	<span class="label label-default">
-		<i class="fa fa-clock-o"></i> Last updated: {{ timestamp }}
-	</span>
-
-	</p>
+	</center>
 </div>
